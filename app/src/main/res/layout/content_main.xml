@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    tools:context=".ui.main.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <include layout="@layout/content_main_top" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/orderModel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/ic_bottom_order"
+            android:gravity="center_horizontal"
+            android:text="@string/order_model"
+            android:textColor="@color/text_title"
+            android:textSize="@dimen/text_size_hint" />
+
+        <RelativeLayout
+            android:id="@+id/workModel"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_solid_white_bg"
+            android:gravity="center_horizontal">
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/imgProcess"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:layout_centerInParent="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/work_model_green" />
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/imgProcess2"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:layout_centerInParent="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/work_model_red" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/getOffModel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/ic_bottom_get_off"
+            android:gravity="center_horizontal"
+            android:text="@string/get_off"
+            android:textColor="@color/text_title"
+            android:textSize="@dimen/text_size_hint" />
+    </LinearLayout>
+
+
+</RelativeLayout>

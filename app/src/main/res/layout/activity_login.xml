@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".ui.login.LoginActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_common_clickable_item"
+        android:layout_marginLeft="@dimen/padding_edge_common"
+        android:layout_marginRight="@dimen/padding_edge_common"
+        android:layout_marginTop="100dp">
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:maxLength="11"
+            android:hint="@string/login_hint_input_mobile"
+            android:inputType="number"
+            android:maxLines="1" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_common_clickable_item"
+        android:layout_marginLeft="@dimen/padding_edge_common"
+        android:layout_marginRight="@dimen/padding_edge_common"
+        android:layout_marginTop="30dp"
+        android:hint="@string/login_hint_input_password"
+        android:inputType="textPassword"
+        android:maxLength="16"
+        android:maxLines="1" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/find_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="6dp"
+        android:padding="8dp"
+        android:text="@string/find_password"
+        android:textColor="@color/text_title"
+        android:textSize="@dimen/text_size_hint" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/login"
+        style="@style/Button.Primary"
+        android:layout_marginLeft="@dimen/padding_edge_common"
+        android:layout_marginRight="@dimen/padding_edge_common"
+        android:layout_marginTop="37dp"
+        android:text="@string/login"
+        android:textColor="@color/white" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/user_agreement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/section_margin"
+        android:padding="8dp"
+        android:textSize="@dimen/text_size_hint" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/Driver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/padding_edge_common"
+            android:padding="8dp"
+            android:text="@string/become_lexing_driver"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size_title" />
+    </RelativeLayout>
+</LinearLayout>

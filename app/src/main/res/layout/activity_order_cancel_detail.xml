@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_order_cancel_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.main.OrderCancelDetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <com.doudou.driver.view.RoundAngleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/padding_edge_common"
+            android:src="@drawable/ic_head"
+            app:roundWidth="29dp"
+            app:roundHeight="29dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="20dp">
+
+            <TextView
+                android:id="@+id/diverName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="张师傅"
+                android:textColor="@color/text_title"
+                android:textSize="@dimen/text_size_title" />
+
+            <TextView
+                android:id="@+id/diverMoblie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="18665128652"
+                android:textColor="@color/text_hint" />
+
+            <ImageView
+                android:id="@+id/imgCallDiver"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/padding_edge_common"
+                android:src="@drawable/ic_call_diver" />
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/imgCallDiverVoice"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="12dp"
+                android:layout_toLeftOf="@+id/imgCallDiver"
+                android:src="@drawable/ic_call_diver_voice" />
+        </RelativeLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_marginTop="40dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_common_clickable_item">
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_height="1px"
+            android:layout_centerVertical="true"
+            android:background="#cccccc" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="8dp"
+            android:text="行程取消"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:layout_marginTop="30dp"
+            android:text="乘客已取消订单"
+            android:textColor="@color/text_title"
+            android:layout_centerHorizontal="true"
+            android:drawableTop="@drawable/icon_cancel"
+            android:drawablePadding="30dp"/>
+        <TextView
+            android:id="@+id/tvCancelReason"
+            android:layout_below="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="@string/cancel_reason"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+</LinearLayout>

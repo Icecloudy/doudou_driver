@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_driver_auth_two"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_gray"
+    android:orientation="vertical"
+    tools:context="com.doudou.driver.ui.login.DriverAuthFourActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_common_clickable_item"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="@dimen/padding_edge_common"
+            android:layout_weight="1"
+            android:background="@drawable/driverauth_green"
+            android:gravity="center"
+            android:text="1手机验证"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_hint" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="33dp"
+            android:layout_weight="1"
+            android:background="@drawable/driverauth_green"
+            android:gravity="center"
+            android:text="2驾驶证"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_hint" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="33dp"
+            android:layout_weight="1"
+            android:background="@drawable/driverauth_green"
+            android:gravity="center"
+            android:text="3车辆信息"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_hint" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="33dp"
+            android:layout_marginRight="@dimen/padding_edge_common"
+            android:layout_weight="1"
+            android:background="@drawable/driverauth_green"
+            android:gravity="center"
+            android:text="4设置密码"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_hint" />
+
+    </LinearLayout>
+
+    <View
+        style="@style/LineDivide"
+        android:layout_marginTop="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_common_clickable_item"
+            android:layout_marginLeft="@dimen/padding_edge_common"
+            android:layout_marginRight="@dimen/padding_edge_common">
+
+
+            <TextView
+                android:id="@+id/password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/password_space"
+                android:textColor="@color/text_title" />
+
+            <EditText
+                android:id="@+id/editPwd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/password"
+                android:background="@null"
+                android:gravity="center_vertical|left"
+                android:hint="不低于6位数字"
+                android:inputType="textPassword"
+                android:maxLength="16"
+                android:maxLines="1" />
+        </RelativeLayout>
+
+        <View
+            style="@style/LineEdge"
+            android:layout_marginLeft="@dimen/padding_edge_common" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_common_clickable_item"
+            android:layout_marginLeft="@dimen/padding_edge_common"
+            android:layout_marginRight="@dimen/padding_edge_common">
+
+
+            <TextView
+                android:id="@+id/confirmPwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/confirm_input"
+                android:textColor="@color/text_title" />
+
+            <EditText
+                android:id="@+id/editConPwd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/confirmPwd"
+                android:background="@null"
+                android:gravity="center_vertical|left"
+                android:hint="@string/input_confirm_password"
+                android:inputType="textPassword"
+                android:maxLength="16"
+                android:maxLines="1" />
+        </RelativeLayout>
+
+        <View style="@style/LineEdge" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_common_clickable_item"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/las_step"
+                style="@style/Button.Primary"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="22dp"
+
+                android:layout_weight="1"
+                android:text="@string/last_step"
+                android:textColor="@color/white" />
+
+            <View
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:background="@color/white" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/next_step"
+                style="@style/Button.Primary"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="22dp"
+                android:layout_weight="1"
+                android:text="完成提交"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

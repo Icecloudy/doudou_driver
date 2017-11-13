@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/shape_solid_green_top">
+
+        <ImageView
+            android:id="@+id/orderType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_send_for" />
+
+        <TextView
+            android:id="@+id/tvOrderDistance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="距离您2.5公里"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_toolbar" />
+
+        <TextView
+            android:id="@+id/tvOrderMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvOrderDistance"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="46.00"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tvOrderMoney"
+            android:layout_margin="5dp"
+            android:layout_toLeftOf="@+id/tvOrderMoney"
+            android:gravity="center"
+            android:text="￥"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_toolbar" />
+
+        <Button
+            android:layout_width="38dp"
+            android:layout_height="20dp"
+            android:layout_alignBottom="@+id/tvOrderMoney"
+            android:layout_margin="10dp"
+            android:layout_toRightOf="@+id/tvOrderMoney"
+            android:background="@drawable/shape_solid_trans"
+            android:text="预估"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_common_clickable_item">
+
+            <ImageView
+                android:id="@+id/imgLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_history" />
+
+            <TextView
+                android:id="@+id/orderDate"
+                style="@style/TextView.Left"
+                android:layout_toRightOf="@+id/imgLeft"
+                android:text="04月04日 12:00（明天）"
+                android:textColor="@color/text_title"
+                android:textSize="@dimen/text_size_title" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/setOutLocation"
+            style="@style/TextView.Left"
+            android:layout_height="@dimen/height_common_clickable_item"
+            android:drawableLeft="@drawable/green_oval"
+            android:drawablePadding="@dimen/padding_edge_common"
+            android:text="沙井地铁站B出口"
+            android:textColor="@color/text_title"
+            android:textSize="@dimen/text_size_title" />
+
+        <TextView
+            android:id="@+id/EsLocation"
+            style="@style/TextView.Left"
+            android:layout_height="@dimen/height_common_clickable_item"
+            android:drawableLeft="@drawable/red_oval"
+            android:drawablePadding="@dimen/padding_edge_common"
+            android:text="深圳东火车站"
+            android:textColor="@color/text_title"
+            android:textSize="@dimen/text_size_title" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_order_dialog_white"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_marginTop="@dimen/padding_edge_common">
+
+        <RelativeLayout
+            android:id="@+id/receiveOrder"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_solid_green_bg">
+
+            <View
+                android:id="@+id/centerView"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_centerVertical="true"
+                android:background="@color/transparent" />
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/centerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="开始接单"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_toolbar"
+                />
+
+            <TextView
+                android:id="@+id/tvReceive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/centerView"
+                android:layout_centerHorizontal="true"
+                android:text="接单"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/countTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/centerView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="20"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_title" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/btnCancel"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@+id/receiveOrder"
+            android:background="@drawable/shape_solid_white_round"
+            android:gravity="center"
+            android:text="放弃"
+            android:textColor="@color/text_title"
+            android:textSize="@dimen/text_size_title" />
+    </RelativeLayout>
+
+
+</LinearLayout>

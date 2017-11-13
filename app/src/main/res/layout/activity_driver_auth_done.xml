@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_driver_auth_done"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_gray"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context="com.doudou.driver.ui.login.DriverAuthDoneActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="提交成功"
+        android:textSize="@dimen/text_size_toolbar"
+        android:textColor="@color/text_title"
+        android:drawableTop="@drawable/ic_submit_succ"
+        android:drawablePadding="26dp"
+        android:gravity="center"
+        android:layout_marginTop="32dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="已成功提交到后台审核，审核结果将会在\n1-3个工作日内发送至您的手机"
+        android:gravity="center"
+        android:layout_marginTop="26dp"/>
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/backToLogin"
+        style="@style/Button.Primary"
+        android:layout_marginLeft="@dimen/padding_edge_common"
+        android:layout_marginRight="@dimen/padding_edge_common"
+        android:layout_marginTop="60dp"
+        android:text="返回登录页面"
+        android:textColor="@color/white" />
+</LinearLayout>

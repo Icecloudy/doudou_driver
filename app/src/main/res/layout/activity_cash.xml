@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_cash"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_gray"
+    android:orientation="vertical"
+    tools:context="com.doudou.driver.ui.profile.wallet.CashActivity">
+
+    <View
+        style="@style/LineDivide"
+        android:layout_marginTop="10dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@color/white">
+
+
+        <TextView
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/padding_edge_common"
+            android:text="提现金额（元）"
+            android:textColor="@color/text_title" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:layout_toRightOf="@+id/password"
+            android:background="@color/text_content" />
+
+        <EditText
+            android:inputType="numberDecimal"
+            android:id="@+id/editCashCount"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="@dimen/padding_edge_common"
+            android:layout_toRightOf="@+id/view1"
+            android:background="@null"
+            android:gravity="center_vertical|left"
+            android:hint="请输入提现金额" />
+    </RelativeLayout>
+
+    <View style="@style/LineEdge" />
+
+    <TextView
+        android:id="@+id/balanceCount"
+        style="@style/TextView.Left"
+        android:layout_height="42dp"
+        android:background="@null"
+        android:text="@string/cash_count" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@color/white">
+
+
+        <TextView
+            android:id="@+id/cashInto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/padding_edge_common"
+            android:text="提现到"
+            android:textColor="@color/text_title" />
+
+        <RadioGroup
+            android:id="@+id/accountRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/padding_edge_common"
+            android:layout_toRightOf="@+id/cashInto"
+            android:gravity="center_vertical|left"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/ali"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/padding_edge_common"
+                android:layout_weight="4"
+                android:background="@drawable/select_cash_bg"
+                android:button="@null"
+                android:drawableLeft="@drawable/ic_alipay"
+                android:gravity="center_vertical|end"
+                android:paddingLeft="30dp"
+                android:paddingRight="15dp"
+                android:text="支付宝" />
+
+            <RadioButton
+                android:id="@+id/bank"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/padding_edge_common"
+                android:layout_weight="4"
+                android:background="@drawable/select_cash_bg"
+                android:button="@null"
+                android:drawableLeft="@drawable/ic_union_pay"
+                android:gravity="center_vertical|end"
+                android:paddingLeft="30dp"
+                android:paddingRight="15dp"
+                android:text="银行卡" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </RadioGroup>
+    </RelativeLayout>
+
+    <View
+        style="@style/LineEdge"
+        android:layout_margin="10dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@color/white">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/padding_edge_common"
+            android:text="账户姓名"
+            android:textColor="@color/text_title" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="88dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/text_content" />
+
+        <EditText
+            android:id="@+id/editAccountName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="@dimen/padding_edge_common"
+            android:layout_toRightOf="@+id/view2"
+            android:background="@null"
+            android:gravity="center_vertical|left"
+            android:hint="请输入账户姓名" />
+    </RelativeLayout>
+
+    <View
+        style="@style/LineEdge"
+        android:layout_marginLeft="@dimen/padding_edge_common" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@color/white">
+
+
+        <TextView
+            android:id="@+id/accountNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/padding_edge_common"
+            android:text="账号/卡号"
+            android:textColor="@color/text_title" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="88dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/text_content" />
+
+        <EditText
+            android:id="@+id/editAccountNumber"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="@dimen/padding_edge_common"
+            android:layout_toRightOf="@+id/view3"
+            android:background="@null"
+            android:gravity="center_vertical|left"
+            android:hint="请输入账号/卡号" />
+    </RelativeLayout>
+
+    <View
+        style="@style/LineEdge"
+        android:layout_marginLeft="@dimen/padding_edge_common" />
+
+    <TextView
+        style="@style/TextView.Left"
+        android:layout_height="42dp"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:text="提现扣除10%税费。" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btnChangeToCash"
+        style="@style/Button.Primary"
+        android:layout_marginLeft="@dimen/padding_edge_common"
+        android:layout_marginRight="@dimen/padding_edge_common"
+        android:layout_marginTop="30dp"
+        android:text="立即提现"
+        android:textColor="@color/white" />
+</LinearLayout>

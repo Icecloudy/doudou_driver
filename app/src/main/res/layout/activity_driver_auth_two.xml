@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<LinearLayout
+    android:id="@+id/activity_driver_auth_two"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_gray"
+    android:orientation="vertical"
+    tools:context="com.doudou.driver.ui.login.DriverAuthTwoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_common_clickable_item"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="@dimen/padding_edge_common"
+            android:layout_weight="1"
+            android:background="@drawable/driverauth_green"
+            android:gravity="center"
+            android:text="1手机验证"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_hint" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="33dp"
+            android:layout_weight="1"
+            android:background="@drawable/driverauth_green"
+            android:gravity="center"
+            android:text="2驾驶证"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_hint" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="33dp"
+            android:layout_weight="1"
+            android:background="@drawable/driverauth_gray"
+            android:gravity="center"
+            android:text="3车辆信息"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_hint" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="33dp"
+            android:layout_marginRight="@dimen/padding_edge_common"
+            android:layout_weight="1"
+            android:background="@drawable/driverauth_gray"
+            android:gravity="center"
+            android:text="4设置密码"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_hint" />
+
+    </LinearLayout>
+
+    <View
+        style="@style/LineDivide"
+        android:layout_marginTop="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextView.Left"
+            android:layout_height="38dp"
+            android:text="真实姓名"
+            android:textColor="@color/text_title" />
+
+        <EditText
+            android:id="@+id/editRealName"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginLeft="@dimen/padding_edge_common"
+            android:layout_marginRight="@dimen/padding_edge_common"
+            android:background="@drawable/shape_gray_border_bg"
+            android:hint="请输入真实姓名"
+            android:paddingLeft="@dimen/padding_edge_common" />
+
+        <TextView
+            style="@style/TextView.Left"
+            android:layout_height="38dp"
+            android:text="驾驶证号"
+            android:textColor="@color/text_title" />
+
+        <EditText
+            android:id="@+id/editDriverNum"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginLeft="@dimen/padding_edge_common"
+            android:layout_marginRight="@dimen/padding_edge_common"
+            android:background="@drawable/shape_gray_border_bg"
+            android:hint="请输入驾驶证编号"
+            android:paddingLeft="@dimen/padding_edge_common" />
+
+        <TextView
+            style="@style/TextView.Left"
+            android:layout_height="38dp"
+            android:text="驾驶证初次领取日期"
+            android:textColor="@color/text_title" />
+
+        <TextView
+            android:id="@+id/editDriverDate"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginLeft="@dimen/padding_edge_common"
+            android:layout_marginRight="@dimen/padding_edge_common"
+            android:gravity="center|left"
+            android:background="@drawable/shape_gray_border_bg"
+            android:hint="请选择你初次领取驾驶证日期"
+            android:paddingLeft="@dimen/padding_edge_common" />
+
+        <TextView
+            style="@style/TextView.Left"
+            android:layout_height="38dp"
+            android:text="上传驾驶证照片"
+            android:textColor="@color/text_title" />
+
+        <ImageView
+            android:id="@+id/imgDriverCard"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginLeft="@dimen/padding_edge_common"
+            android:layout_marginRight="@dimen/padding_edge_common"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_driver_card_bg" />
+        <TextView
+            style="@style/TextView.Left"
+            android:layout_height="38dp"
+            android:text="上传行驶证照片"
+            android:textColor="@color/text_title" />
+
+        <ImageView
+            android:id="@+id/imgDriverLicense"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginLeft="@dimen/padding_edge_common"
+            android:layout_marginRight="@dimen/padding_edge_common"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_driver_license" />
+        <TextView
+            style="@style/TextView.Left"
+            android:layout_height="38dp"
+            android:gravity="center"
+            android:text="驾驶证信息会作为实名信息进行认证"
+            android:textColor="@color/text_title" />
+    </LinearLayout>
+
+    <View
+        style="@style/LineDivide"
+        android:layout_marginTop="10dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_common_clickable_item"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_common_clickable_item"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="22dp">
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/las_step"
+                style="@style/Button.Primary"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+
+                android:layout_weight="1"
+                android:text="@string/last_step"
+                android:textColor="@color/white" />
+
+            <View
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:background="@color/white" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/next_step"
+                style="@style/Button.Primary"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:text="@string/next_step"
+                android:textColor="@color/white"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
+</ScrollView>

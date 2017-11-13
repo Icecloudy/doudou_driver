@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.doudou.driver">
+
+    <!-- 使用相机 -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- To auto-complete the emailw ext field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- 用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 用于访问网络，网络定位需要上网 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入缓存定位数据 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Required -->
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- Optional. Required for location feature -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/app_logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar">
+
+        <!-- 高德 -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="6aef1b8e63393edcfa9506da0311fe66" />
+
+        <service android:name="com.amap.api.location.APSService" />
+
+        <activity android:name=".ui.splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.login.LoginActivity" />
+        <activity android:name=".ui.login.DriverAuthOneActivity" />
+        <activity android:name=".ui.login.DriverAuthTwoActivity" />
+        <activity android:name=".ui.login.DriverAuthThreeActivity" />
+        <activity android:name=".ui.login.DriverAuthFourActivity" />
+        <activity android:name=".ui.login.DriverAuthDoneActivity" />
+        <activity android:name=".ui.login.FindPasswordActivity" />
+        <activity android:name=".ui.login.FindPwdSetActivity" />
+        <activity android:name=".ui.login.UserAgreementActivity" />
+        <activity android:name=".ui.profile.profile.ChangePasswordActivity" />
+        <activity android:name=".ui.profile.profile.ProfileActivity" />
+        <activity android:name=".ui.profile.profile.SetPasswordActivity" />
+        <activity android:name=".ui.profile.settings.AboutLexingActivity" />
+        <activity android:name=".ui.profile.settings.FeedbackActivity" />
+        <activity android:name=".ui.profile.settings.SettingsActivity" />
+        <activity android:name=".ui.profile.wallet.WalletActivity" />
+        <activity android:name=".ui.profile.record.TripRecordActivity" />
+        <activity android:name=".ui.profile.news.NewsActivity" />
+        <activity android:name=".ui.profile.record.OrderDetailsActivity" />
+        <activity android:name=".ui.profile.wallet.CashActivity" />
+        <activity android:name=".ui.main.CancelOrderActivity" />
+        <activity android:name=".ui.main.ConfirmOrderActivity" />
+
+        <receiver
+            android:name=".receiver.MyReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!-- Required  用户注册SDK的intent -->
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!-- Required  用户接收SDK消息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!-- Required  用户接收SDK通知栏信息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!-- Required  用户打开自定义通知栏的intent -->
+                <action android:name="cn.jpush.android.intent.CONNECTION" /> <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <category android:name="com.doudou.driver" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".ui.main.PickUserUpActivity" />
+        <activity android:name=".ui.main.OrderCancelDetailActivity" />
+        <activity
+            android:name=".ui.main.RouteNaviActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity android:name=".ui.profile.record.TripDetailsActivity" />
+        <activity android:name=".ui.profile.rank.RankListActivity" />
+        <activity android:name=".ui.profile.opinion.OpinionListActivity" />
+        <activity
+            android:name=".ui.main.AcceptOrderModelActivity"
+            android:theme="@style/MyDialogStyleBottom" />
+        <activity android:name=".ui.profile.share.ShareActivity" />
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true" />
+
+        <receiver android:name=".receiver.AppRegister">
+            <intent-filter>
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".ui.main.TraceActivity" />
+    </application>
+
+</manifest>
