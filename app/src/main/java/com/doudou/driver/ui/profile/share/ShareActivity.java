@@ -1,5 +1,6 @@
 package com.doudou.driver.ui.profile.share;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -7,6 +8,7 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.doudou.driver.BaseActivity;
@@ -15,12 +17,19 @@ import com.doudou.driver.data.UserDataPreference;
 import com.doudou.driver.nohttp.BaseRequest;
 import com.doudou.driver.nohttp.HttpListener;
 import com.doudou.driver.utils.ConfigUtil;
+import com.tencent.connect.common.Constants;
+import com.tencent.connect.share.QQShare;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.Tencent;
+import com.tencent.tauth.UiError;
 import com.yolanda.nohttp.rest.Response;
+
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -44,6 +53,7 @@ public class ShareActivity extends BaseActivity implements HttpListener {
     TextView pYQ;
 
     private IWXAPI api;
+    private Tencent mTencent;
 
     UserDataPreference userDataPreference;
     ShareData  shareData;
@@ -54,6 +64,7 @@ public class ShareActivity extends BaseActivity implements HttpListener {
         ButterKnife.bind(this);
         setTitle("推荐有奖");
         api = WXAPIFactory.createWXAPI(this, ConfigUtil.WECHAT_PAY_APPID);
+        mTencent = Tencent.createInstance(ConfigUtil.QQ_SHARE_APPID, this.getApplicationContext());
         userDataPreference = new UserDataPreference(this);
         getShareData(2);
     }
@@ -65,12 +76,32 @@ public class ShareActivity extends BaseActivity implements HttpListener {
                 shareWx(R.id.weChat);
                 break;
             case R.id.QQ:
-                showMsg("暂不支持");
+                //showMsg("暂不支持");
+                shareQQ();
                 break;
             case R.id.pYQ:
                 shareWx(R.id.pYQ);
                 break;
         }
+    }
+
+    private void shareQQ() {
+        final Bundle bundle = new Bundle();
+
+        bundle.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_DEFAULT);
+        bundle.putString(QQShare.SHARE_TO_QQ_TITLE, "豆豆司机");            // 标题
+        bundle.putString(QQShare.SHARE_TO_QQ_SUMMARY, "豆豆打车 - 真人认证美女帅哥高素质司机，高端出行必备");   // 摘要
+        bundle.putString(QQShare.SHARE_TO_QQ_TARGET_URL, "http://a.app.qq.com/o/simple.jsp?pkgname=com.doudou.driver");// 内容地址
+        bundle.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, "http://chuantu.biz/t6/141/1510738991x1861851994.png");// 网络图片地址　　
+        bundle.putString(QQShare.SHARE_TO_QQ_APP_NAME, "豆豆打车");     // 应用名称
+        bundle.putString(QQShare.SHARE_TO_QQ_EXT_INT, "其它附加功能");
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mTencent.shareToQQ(ShareActivity.this, bundle , qqListener);
+            }
+        }).start();
     }
 
     //
@@ -166,7 +197,6 @@ public class ShareActivity extends BaseActivity implements HttpListener {
 
     }
 
-
     private void getShareData(int usertype) {
         BaseRequest baseRequest = new BaseRequest(ConfigUtil.GET_SHARE_DATA)
                 .add("phone", userDataPreference.getAccount())
@@ -174,6 +204,19 @@ public class ShareActivity extends BaseActivity implements HttpListener {
                 .add("type", 1)
                 .add("usertype", usertype);
         request(0, baseRequest, this, false, true);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        super.onActivityResult(requestCode, resultCode, data);
+        Tencent.onActivityResultData(requestCode, resultCode, data, qqListener);
+        if (requestCode == Constants.REQUEST_API) {
+            if (resultCode == Constants.REQUEST_QQ_SHARE || resultCode == Constants.REQUEST_QZONE_SHARE || resultCode == Constants.REQUEST_OLD_SHARE) {
+                Tencent.handleResultData(data, qqListener);
+            }
+        }
     }
 
     @Override
@@ -195,4 +238,21 @@ public class ShareActivity extends BaseActivity implements HttpListener {
     public void onFailed(int what, Response<String> response) {
 
     }
+
+    private IUiListener qqListener = new IUiListener() {
+        @Override
+        public void onComplete(Object object) {
+            Toast.makeText(getApplicationContext(), "分享成功", Toast.LENGTH_LONG);
+        }
+
+        @Override
+        public void onError(UiError e) {
+            Toast.makeText(getApplicationContext(), "分享失败", Toast.LENGTH_LONG);
+        }
+
+        @Override
+        public void onCancel() {
+            Toast.makeText(getApplicationContext(), "取消分享", Toast.LENGTH_LONG);
+        }
+    };
 }
