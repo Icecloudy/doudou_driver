@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+import com.doudou.driver.nohttp.CallServer;
+import com.doudou.driver.utils.secure.Md5;
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.doudou.driver.BaseActivity;
@@ -30,6 +32,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.jpush.android.api.JPushInterface;
 
 public class WalletActivity extends BaseActivity implements HttpListener{
 
@@ -49,6 +52,8 @@ public class WalletActivity extends BaseActivity implements HttpListener{
     UserDataPreference userDataPreference;
     private int page = 1;
 
+    private static final int GET_BILL = 0x000;
+    private static final int UPDATE_USER = 0x001;
 
     @Override
     protected void onActivityCreate(Bundle savedInstanceState) {
@@ -64,8 +69,13 @@ public class WalletActivity extends BaseActivity implements HttpListener{
         setRefreshLayout();
     }
 
-    private void setRefreshLayout() {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getUserInfo();
+    }
 
+    private void setRefreshLayout() {
         refreshLayout.setOnRefreshListener(new RefreshListenerAdapter() {
             @Override
             public void onRefresh(final TwinklingRefreshLayout refreshLayout) {
@@ -100,6 +110,14 @@ public class WalletActivity extends BaseActivity implements HttpListener{
         mRecyclerView.setAdapter(billAdapter);
     }
 
+    private void getUserInfo() {
+        BaseRequest baseRequest = new BaseRequest(ConfigUtil.LOGIN)
+                .add("clientid", JPushInterface.getRegistrationID(this))
+                .add("phone", userDataPreference.getAccount())
+                .add("password", Md5.getMd5(userDataPreference.getPassword()));
+
+        request(UPDATE_USER, baseRequest, this, false, false);
+    }
 
     private void getBill(int page) {
         BaseRequest baseRequest = new BaseRequest(ConfigUtil.GET_BILL_DETAIL)
@@ -107,7 +125,7 @@ public class WalletActivity extends BaseActivity implements HttpListener{
                 .add("token", userDataPreference.getToken())
                 .add("usertype",2)
                 .add("page", page);
-        request(0, baseRequest, this, false, true);
+        request(GET_BILL, baseRequest, this, false, true);
 
     }
 
@@ -120,32 +138,40 @@ public class WalletActivity extends BaseActivity implements HttpListener{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode==RESULT_OK){
+        if (resultCode == RESULT_OK){
             UserBean userBean = JSON.parseObject(userDataPreference.getUserInfo(), UserBean.class);
             balanceCount.setText(userBean.getBalance() + "");
+            getBill(page);
         }
     }
 
     @Override
     public void onSucceed(int what, String response) {
-        try {
-            List<BillBean> beanList = JSON.parseArray(response, BillBean.class);
-            if (page>1){
-                mList.addAll(beanList);
-                refreshLayout.finishLoadmore();
-            }else{
-                if (mList!=null){
-                    mList.clear();
+        if (what == UPDATE_USER) {
+            userDataPreference.setUserInfo(response);
+            UserBean userBean = JSON.parseObject(userDataPreference.getUserInfo(), UserBean.class);
+            balanceCount.setText(userBean.getBalance() + "");
+        } if (what == GET_BILL) {
+            try {
+                List<BillBean> beanList = JSON.parseArray(response, BillBean.class);
+                if (page>1){
+                    mList.addAll(beanList);
+                    refreshLayout.finishLoadmore();
+                } else {
+                    if (mList!=null){
+                        mList.clear();
+                    }
+                    mList.addAll(beanList);
+                    refreshLayout.finishRefreshing();
                 }
-                mList.addAll(beanList);
-                refreshLayout.finishRefreshing();
-            }
-            setBillAdapter();
+                setBillAdapter();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
+
     @Override
     public void onCodeError(int what, int code, String msg) {
         if (page>1){

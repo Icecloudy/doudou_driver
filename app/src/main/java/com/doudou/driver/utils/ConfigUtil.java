@@ -28,7 +28,7 @@ public class ConfigUtil {
     public static final String PAYLOAD_txt = "txt";
     public static final String PAYLOAD_hasorder = "hasorder";
     public static final String PAYLOAD_LOGOUT = "offLine";
-    public static final String WECHAT_PAY_APPID = "wxf2c7303cae0cda0e";
+    public static final String WECHAT_PAY_APPID = "wx429197ecfb2c7297";
     public static final String QQ_SHARE_APPID = "1106379008";
     /**
      * broadcast start

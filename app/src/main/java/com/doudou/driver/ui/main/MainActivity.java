@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity implements HttpListener,
         }
         getDriverData();//获取司机信息
         showOrderDialog();
-
+        getUserInfo();
     }
 
     private void initView(Bundle savedInstanceState) {
@@ -398,13 +398,18 @@ public class MainActivity extends AppCompatActivity implements HttpListener,
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             if (requestCode == 1000) {
-                BaseRequest baseRequest = new BaseRequest(ConfigUtil.LOGIN)
-                        .add("clientid", JPushInterface.getRegistrationID(this))
-                        .add("phone", userDataPreference.getAccount())
-                        .add("password", Md5.getMd5(userDataPreference.getPassword()));
-                CallServer.getRequestInstance().add(this, UPDATE_USER, baseRequest, this, false, false);
+                getUserInfo();
             }
         }
+    }
+
+    private void getUserInfo() {
+        BaseRequest baseRequest = new BaseRequest(ConfigUtil.LOGIN)
+                .add("clientid", JPushInterface.getRegistrationID(this))
+                .add("phone", userDataPreference.getAccount())
+                .add("password", Md5.getMd5(userDataPreference.getPassword()));
+
+        CallServer.getRequestInstance().add(this, UPDATE_USER, baseRequest, this, false, false);
     }
 
     /******************
@@ -664,7 +669,9 @@ public class MainActivity extends AppCompatActivity implements HttpListener,
 
     @Override
     public void onCodeError(int what, int code, String msg) {
-        if (what == GET_ORDER_LIST) {
+        if (what == REPORT_LOCATION) {
+            Log.i(MainActivity.class.getName(), "上报位置失败");
+        } else if (what == GET_ORDER_LIST) {
             //setEmpty
             setEmptyView(true);
         } else if (what == GET_STATE) {
@@ -672,6 +679,14 @@ public class MainActivity extends AppCompatActivity implements HttpListener,
         } else if (what == GET_DRIVER_DATA) {
             layoutDriver1.setVisibility(View.GONE);
             layoutDriver2.setVisibility(View.GONE);
+        } else if (what == UPDATE_USER) {
+            if (code == 206) {
+                userDataPreference.removeData(UserDataPreference.TOKEN);
+                startActivity(new Intent(this, LoginActivity.class));
+                SysApplication.getInstance().exit();
+            }
+
+            ToastUtil.showToast(this, msg);
         } else {
             ToastUtil.showToast(this, msg);
         }
